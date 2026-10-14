@@ -1,12 +1,5 @@
-"""M3 - Sorting dan searching pesanan.
-
-Algoritma dibuat manual untuk kebutuhan praktikum:
-- insertion sort stabil, O(n^2), dibatasi maksimal 20.000 data di UI
-- merge sort stabil, O(n log n)
-- linear search O(n)
-- binary search O(log n) setelah data diurutkan berdasarkan oid
-
-Tidak menggunakan sorted(), list.sort(), dict, set, heapq, bisect, atau collections.
+"""
+M3 - Sorting dan searching pesanan.
 """
 
 
@@ -16,7 +9,6 @@ def nilai_kunci(pesanan, kunci):
     if kunci == "harga":
         return pesanan.harga
     if kunci == "selesai":
-        # Pesanan yang belum selesai diletakkan sebelum waktu selesai yang valid.
         if pesanan.t_selesai_detik is None:
             return -1
         return pesanan.t_selesai_detik
@@ -75,7 +67,6 @@ def merge_sort(data, kunci="selesai"):
             keluar = awal
             while kiri < tengah and kanan < akhir:
                 perbandingan += 1
-                # <= menjaga stabilitas: jika sama, ambil dari bagian kiri.
                 if nilai_kunci(sumber[kiri], kunci) <= nilai_kunci(sumber[kanan], kunci):
                     target[keluar] = sumber[kiri]
                     kiri += 1

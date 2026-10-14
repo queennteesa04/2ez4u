@@ -9,7 +9,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.m1_pesanan import baca_csv, ArrayPesanan, LinkedListPesanan, Pesanan
-from backend.m2_antrean import evaluasi_kasir, AntreanNaif, AntreanMelingkar, UndoRedoQueue
+from backend.m2_antrean import evaluasi_kasir, jejak_ke_postfix, jejak_hitung_postfix, AntreanNaif, AntreanMelingkar, UndoRedoQueue
 from backend.m3_laporan import insertion_sort, merge_sort, linear_search, binary_search
 
 MENU_HINTS = {
@@ -191,10 +191,21 @@ class App:
                 self.log("Linked: " + format_pesanan(l))
 
             elif pilihan == "M2 - Kasir Postfix":
-                postfix, total = evaluasi_kasir(teks)
-                self.log("Infix   : " + teks)
-                self.log("Postfix : " + " ".join(postfix))
-                self.log("TOTAL   : Rp" + format(total, ",.0f").replace(",", "."))
+                postfix, jejak_konversi = jejak_ke_postfix(teks)
+                total, jejak_evaluasi = jejak_hitung_postfix(postfix)
+                self.log("INfix: " + teks)
+                self.log("\nTAHAP 1 - KONVERSI INFIX KE POSTFIX")
+                self.log(f"{'Token':<10} {'Tindakan':<55} {'Stack operator':<22} Keluaran")
+                self.log("-" * 120)
+                for token, tindakan, stack, keluaran in jejak_konversi:
+                    self.log(f"{token:<10} {tindakan:<55} {stack:<22} {keluaran}")
+                self.log("\nPostfix akhir: " + " ".join(postfix))
+                self.log("\nTAHAP 2 - EVALUASI POSTFIX")
+                self.log(f"{'Token':<10} {'Tindakan':<55} Stack nilai")
+                self.log("-" * 100)
+                for token, tindakan, stack in jejak_evaluasi:
+                    self.log(f"{token:<10} {tindakan:<55} {stack}")
+                self.log("TOTAL: Rp" + format(total, ",.0f").replace(",", "."))
 
             elif pilihan == "M2 - Queue Enqueue":
                 indeks = int(teks)

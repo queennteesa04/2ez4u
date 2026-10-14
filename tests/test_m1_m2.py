@@ -42,9 +42,27 @@ def test_naif():
     assert q.dequeue() == "A"
     assert q.total_geseran == 2
 
+from backend.m3_laporan import insertion_sort, merge_sort, linear_search, binary_search
+
+def test_m3():
+    p1 = Pesanan("O-3", "a", "r", "m", 2000, 3, 0, 30, "DONE")
+    p2 = Pesanan("O-1", "b", "r", "m", 1000, 3, 0, 10, "DONE")
+    p3 = Pesanan("O-2", "c", "r", "m", 1000, 3, 0, 10, "DONE")
+    data = [p1, p2, p3]
+    ins, ci, mi = insertion_sort(data, "harga")
+    mer, cm, mm = merge_sort(data, "harga")
+    assert [p.oid for p in ins] == ["O-1", "O-2", "O-3"]
+    assert [p.oid for p in mer] == ["O-1", "O-2", "O-3"]
+    assert linear_search(data, "O-2")[0] == 2
+    by_oid, _, _ = merge_sort(data, "oid")
+    assert binary_search(by_oid, "O-2")[0] == 1
+    assert binary_search(by_oid, "O-X")[0] == -1
+
+
 if __name__ == "__main__":
     test_m1()
     test_postfix()
     test_queue()
     test_naif()
-    print("SEMUA TEST M1-M2 LULUS")
+    test_m3()
+    print("SEMUA TEST M1-M3 LULUS")

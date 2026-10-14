@@ -2,7 +2,7 @@
 
 proyek Struktur Data & Analisa Algoritma. Aplikasi engine backend layanan antar makanan/barang
 
-## Yang sudah dibuat
+## Progress proyek
 
 - **M1:** Array dan Linked List untuk menyimpan data pesanan.
 - **M2:** Queue, circular queue, stack untuk menghitung total belanja, serta fitur undo dan redo.

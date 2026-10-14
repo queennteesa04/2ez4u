@@ -1,128 +1,102 @@
-# 2EZ4U APP — Milestone 1 & 2 & 3
+# 2EZ4U APP
 
-Proyek Struktur Data & Analisa Algoritma. Implementasi engine backend layanan antar makanan/barang.
+Ini adalah proyek Python untuk mata kuliah Struktur Data & Analisa Algoritma (EC234303). Aplikasi ini dibuat untuk mengelola data pesanan sederhana, mulai dari melihat dan menambah pesanan sampai mencoba antrean, sorting, dan searching.
 
-## Cakupan saat ini
+## Yang sudah dibuat
 
-- M1: Array dan Linked List untuk data pesanan.
-- M2: Stack, infix → postfix → evaluasi, queue naif, queue melingkar, undo dan redo.
-- Frontend: Tkinter sederhana untuk menjalankan fitur M1–M2.
-- Data: `data/pesanan.csv` (200.000 baris) dan `data/peta.csv`.
+- **M1:** Array dan Linked List untuk menyimpan data pesanan.
+- **M2:** Queue, circular queue, stack untuk menghitung total belanja, serta fitur undo dan redo.
+- **M3:** Insertion Sort, Merge Sort, Linear Search, dan Binary Search.
+- **Frontend:** Tampilan sederhana menggunakan Tkinter.
 
-## Struktur
+Data yang dipakai ada di folder `data`, yaitu `pesanan.csv` dan `peta.csv`.
+
+## Struktur folder
 
 ```text
 2ez4u/
-├── README.md
 ├── app.py
+├── README.md
 ├── data/
 │   ├── pesanan.csv
 │   └── peta.csv
 ├── backend/
 │   ├── __init__.py
 │   ├── m1_pesanan.py
-│   └── m2_antrean.py
+│   ├── m2_antrean.py
+│   └── m3_laporan.py
 ├── frontend/
 │   └── ui.py
 └── tests/
     └── test_m1_m2.py
 ```
 
-## Aturan implementasi
+## Cara menjalankan
 
-Sesuai petunjuk proyek, implementasi tidak memakai `dict`, `set`, `sorted()`, `.sort()`, `heapq`, `bisect`, `collections.*`, atau dictionary/set comprehension. Struktur utama dibuat sendiri menggunakan list sebagai array, node linked list, stack, dan circular queue.
-
-## Menjalankan
-
-Python 3.11+.
+Pastikan Python sudah terpasang. Setelah itu, buka terminal di folder proyek dan jalankan:
 
 ```bash
 python app.py
 ```
 
-Untuk pengujian:
+Nanti akan muncul tampilan aplikasi. Pilih fitur di bagian menu, isi kolom input sesuai petunjuk, lalu tekan tombol **Jalankan**.
+
+Untuk menjalankan pengujian:
 
 ```bash
 python tests/test_m1_m2.py
 ```
 
-Output yang diharapkan:
+Kalau pengujian berhasil, pesan terakhirnya adalah:
 
 ```text
-SEMUA TEST M1-M2 LULUS
+SEMUA TEST M1-M3 LULUS
 ```
 
-## Fitur M1
+## Fitur M1 - Data pesanan
 
-1. Array - lihat pesanan
-2. Linked List - lihat pesanan
-3. Tambah REGULER ke belakang
-4. Tambah PRIORITAS ke tengah
-5. Tambah VIP ke depan
-6. Hapus pesanan berdasarkan indeks
+Di bagian M1, data pesanan disimpan menggunakan Array dan Linked List. Beberapa operasi yang tersedia adalah melihat pesanan, menambah pesanan reguler, prioritas, atau VIP, serta menghapus pesanan berdasarkan indeks.
 
-Array menggunakan kapasitas yang bertumbuh 2x ketika penuh. Linked List menyimpan `head` dan `tail`, sehingga penambahan di belakang tetap efisien.
+Pada menu lihat pesanan, kolom input bisa dikosongkan untuk melihat ringkasan dan 20 pesanan pertama. Kalau ingin melihat pesanan tertentu, masukkan indeksnya, misalnya `0`.
 
-## Fitur M2
+## Fitur M2 - Antrean dan kasir
 
-### Stack kasir
+M2 berisi implementasi queue biasa dan circular queue. Keduanya dipakai untuk mencoba proses masuk dan keluarnya data dari antrean.
 
-Contoh:
+Ada juga fitur perhitungan total belanja menggunakan stack. Contoh ekspresi yang bisa dicoba:
 
 ```text
 ( 3 * 12000 ) + ( 2 * 8500 ) - 5000
 ```
 
-menjadi:
+Ekspresi tersebut diubah ke bentuk postfix sebelum dihitung, dengan hasil `48000` atau Rp48.000.
 
-```text
-3 12000 * 2 8500 * + 5000 -
-```
+Fitur undo dan redo digunakan untuk membatalkan aksi sebelumnya atau mengembalikan aksi yang dibatalkan.
 
-dan menghasilkan:
+## Fitur M3 - Sorting dan searching
 
-```text
-Rp48.000
-```
+M3 berisi dua algoritma sorting dan dua algoritma searching:
 
-### Queue
+- **Insertion Sort:** mengurutkan data satu per satu. Di frontend, jumlah data dibatasi sampai 20.000 agar prosesnya tidak terlalu lama.
+- **Merge Sort:** membagi data menjadi beberapa bagian lalu menggabungkan hasil yang sudah terurut. Bisa digunakan untuk seluruh data pesanan.
+- **Linear Search:** mencari ID pesanan dengan memeriksa data satu per satu.
+- **Binary Search:** mencari ID pada data yang sudah diurutkan berdasarkan ID.
+- **Bandingkan Sort:** membandingkan hasil Insertion Sort dan Merge Sort menggunakan sampel data yang sama.
 
-Dibuat dua versi:
+Kolom input M3 bisa diisi seperti contoh berikut:
 
-- `AntreanNaif`: dequeue memakai `pop(0)` dan menghitung jumlah elemen yang bergeser.
-- `AntreanMelingkar`: dequeue hanya memajukan `front`, sehingga tidak perlu menggeser elemen.
+| Menu | Contoh input |
+|---|---|
+| Insertion Sort | `10,harga` |
+| Merge Sort | `semua,harga` |
+| Bandingkan Sort | `2000,harga` |
+| Linear Search | `O-000002` |
+| Binary Search | `O-000002` |
 
-### Undo/Redo
+Untuk sorting, pilihan kolomnya adalah `oid`, `harga`, atau `selesai`.
 
-- aksi baru masuk ke stack undo;
-- undo menjalankan kebalikan aksi;
-- aksi yang di-undo masuk ke stack redo;
-- aksi baru setelah undo mengosongkan redo.
+## Catatan
 
-## Kompleksitas utama
+Untuk tugas ini, beberapa struktur data dan algoritma dibuat sendiri agar prosesnya bisa dipelajari dan dibandingkan. Implementasi juga mengikuti batasan dari petunjuk proyek, jadi tidak menggunakan beberapa fungsi bawaan seperti `sorted()`, `.sort()`, `heapq`, `bisect`, dan `collections`.
 
-| Fitur | Struktur | Kompleksitas |
-|---|---|---|
-| Array get | Array | O(1) |
-| Array tambah reguler | Array | amortized O(1) |
-| Array tambah VIP | Array | O(n) |
-| Linked List tambah reguler | Linked List + tail | O(1) |
-| Linked List tambah VIP | Linked List | O(1) |
-| Linked List get | Linked List | O(n) |
-| Postfix | Stack | O(n) |
-| Queue naif dequeue | Array | O(n) |
-| Queue circular dequeue | Circular queue | O(1) |
-| Undo/Redo | Stack | O(1) untuk aksi ujung |
-
-## Catatan pengembangan
-
-M1 dan M2 adalah fondasi. Milestone berikutnya dapat ditambahkan tanpa mengubah struktur dasar:
-
-- M3: insertion sort, merge sort, linear search, binary search.
-- M4: hash dan pencarian.
-- M5: BST dan min-heap.
-- M6: graf, BFS, dan Dijkstra.
-
-## Bukti/demo yang perlu ditambahkan saat pengumpulan
-
-Tambahkan screenshot UI, hasil test, grafik/tabel perbandingan waktu atau jumlah operasi yang diwajibkan dosen, serta video demo ke README sebelum final submission.
+README ini masih bisa dilengkapi lagi dengan screenshot aplikasi, hasil pengujian, dan video demo setelah semuanya siap untuk dikumpulkan.

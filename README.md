@@ -1,6 +1,6 @@
 # 2EZ4U APP
 
-Ini adalah proyek Python untuk mata kuliah Struktur Data & Analisa Algoritma (EC234303). Aplikasi ini dibuat untuk mengelola data pesanan sederhana, mulai dari melihat dan menambah pesanan sampai mencoba antrean, sorting, dan searching.
+proyek Struktur Data & Analisa Algoritma. Aplikasi engine backend layanan antar makanan/barang
 
 ## Yang sudah dibuat
 
@@ -94,9 +94,3 @@ Kolom input M3 bisa diisi seperti contoh berikut:
 | Binary Search | `O-000002` |
 
 Untuk sorting, pilihan kolomnya adalah `oid`, `harga`, atau `selesai`.
-
-## Catatan
-
-Untuk tugas ini, beberapa struktur data dan algoritma dibuat sendiri agar prosesnya bisa dipelajari dan dibandingkan. Implementasi juga mengikuti batasan dari petunjuk proyek, jadi tidak menggunakan beberapa fungsi bawaan seperti `sorted()`, `.sort()`, `heapq`, `bisect`, dan `collections`.
-
-README ini masih bisa dilengkapi lagi dengan screenshot aplikasi, hasil pengujian, dan video demo setelah semuanya siap untuk dikumpulkan.

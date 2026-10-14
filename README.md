@@ -87,6 +87,14 @@ M3 berisi dua algoritma sorting dan dua algoritma searching:
 - **Binary Search:** mencari ID pada data yang sudah diurutkan berdasarkan ID.
 - **Bandingkan Sort:** membandingkan hasil Insertion Sort dan Merge Sort menggunakan sampel data yang sama.
 
+Contoh Penggunaan Binary Search
+
+ID Pesanan: O-TEST-002 
+
+Binary Search digunakan untuk mencari pesanan berdasarkan ID. Sebelum pencarian dilakukan, data pesanan diurutkan berdasarkan ID terlebih dahulu.
+
+![Binary Search](screenshots/Screenshot-binary-search.png)
+
 Kolom input M3 bisa diisi seperti contoh berikut:
 
 | Menu | Contoh input |

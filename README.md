@@ -1,6 +1,6 @@
-# 2EZ4U APP — Milestone 1 & 2
+# 2EZ4U APP — Milestone 1 & 2 & 3
 
-Proyek akhir Struktur Data & Analisa Algoritma (EC234303). Implementasi Python 3.11+ untuk engine backend mini layanan antar makanan/barang.
+Proyek Struktur Data & Analisa Algoritma. Implementasi engine backend layanan antar makanan/barang.
 
 ## Cakupan saat ini
 

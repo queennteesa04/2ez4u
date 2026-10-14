@@ -1,6 +1,5 @@
 """
 M2 - Stack, postfix, undo/redo, queue naif, queue melingkar.
-Dilarang memakai dict/set/sorted/.sort()/collections/heapq/bisect.
 """
 
 class Stack:
@@ -259,8 +258,6 @@ class UndoRedoQueue:
             return False
 
         if aksi.jenis == "enqueue":
-            # Untuk antrean circular, pembatalan enqueue di ujung belakang
-            # dilakukan dengan mengambil satu elemen terakhir secara aman.
             current = self.antrean.snapshot()
             target = []
             i = 0

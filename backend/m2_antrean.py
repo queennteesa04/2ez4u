@@ -258,8 +258,6 @@ class UndoRedoQueue:
             return False
 
         if aksi.jenis == "enqueue":
-            # Untuk antrean circular, pembatalan enqueue di ujung belakang
-            # dilakukan dengan mengambil satu elemen terakhir secara aman.
             current = self.antrean.snapshot()
             target = []
             i = 0
@@ -309,7 +307,6 @@ def evaluasi_kasir(ekspresi):
 
 
 def jejak_ke_postfix(ekspresi):
-    """Mengembalikan postfix dan catatan tiap langkah konversi."""
     tokens = tokenisasi(ekspresi)
     operators = Stack()
     output = []
@@ -353,7 +350,6 @@ def jejak_ke_postfix(ekspresi):
 
 
 def jejak_hitung_postfix(postfix):
-    """Menghitung postfix dan mengembalikan catatan setiap langkah stack."""
     angka = Stack()
     jejak = []
     for t in postfix:

@@ -47,7 +47,7 @@ Di bagian M1, data pesanan disimpan menggunakan Array dan Linked List. Beberapa 
 
 Pada menu lihat pesanan, kolom input bisa dikosongkan untuk melihat ringkasan dan 20 pesanan pertama. jika ingin melihat pesanan tertentu, masukkan indeksnya, misalnya `0`.
 
-![Tambah Prioritas](screenshots/screenshot-postfix.png)
+![Tambah Prioritas](screenshots/screenshot-tambah-prioritas.png)
 
 ## Fitur M2 - Antrean dan kasir
 

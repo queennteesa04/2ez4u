@@ -41,18 +41,6 @@ python app.py
 
 Nanti akan muncul tampilan aplikasi. Pilih fitur di bagian menu, isi kolom input sesuai petunjuk, lalu tekan tombol **Jalankan**.
 
-Untuk menjalankan pengujian:
-
-```bash
-python tests/test_m1_m2.py
-```
-
-Kalau pengujian berhasil, pesan terakhirnya adalah:
-
-```text
-SEMUA TEST M1-M3 LULUS
-```
-
 ## Fitur M1 - Data pesanan
 
 Di bagian M1, data pesanan disimpan menggunakan Array dan Linked List. Beberapa operasi yang tersedia adalah melihat pesanan, menambah pesanan reguler, prioritas, atau VIP, serta menghapus pesanan berdasarkan indeks.

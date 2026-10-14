@@ -48,11 +48,17 @@ Di bagian M1, data pesanan disimpan menggunakan Array dan Linked List. Beberapa 
 Pada menu lihat pesanan, kolom input bisa dikosongkan untuk melihat ringkasan dan 20 pesanan pertama. jika ingin melihat pesanan tertentu, masukkan indeksnya, misalnya `0`.
 
 Contoh Penggunaan Fitur Tambah Prioritas
+
 ID Pesanan: O-TEST-002 
+
 Nama Pelanggan: Asep
+
 Harga: Rp14.000
+
 Jenis Pesanan: PRIORITAS
+
 Pesanan tersebut dimasukkan melalui menu Tambah Prioritas pada aplikasi. Setelah berhasil ditambahkan, kita bisa membuka menu Lihat Pesanan untuk memeriksa data pesanan yang sudah masuk.
+
 ![Tambah Prioritas](screenshots/Screenshot-tambah-prioritas.png)
 
 ## Fitur M2 - Antrean dan kasir

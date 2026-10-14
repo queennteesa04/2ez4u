@@ -57,19 +57,19 @@ SEMUA TEST M1-M3 LULUS
 
 Di bagian M1, data pesanan disimpan menggunakan Array dan Linked List. Beberapa operasi yang tersedia adalah melihat pesanan, menambah pesanan reguler, prioritas, atau VIP, serta menghapus pesanan berdasarkan indeks.
 
-Pada menu lihat pesanan, kolom input bisa dikosongkan untuk melihat ringkasan dan 20 pesanan pertama. Kalau ingin melihat pesanan tertentu, masukkan indeksnya, misalnya `0`.
+Pada menu lihat pesanan, kolom input bisa dikosongkan untuk melihat ringkasan dan 20 pesanan pertama. jika ingin melihat pesanan tertentu, masukkan indeksnya, misalnya `0`.
 
 ## Fitur M2 - Antrean dan kasir
 
 M2 berisi implementasi queue biasa dan circular queue. Keduanya dipakai untuk mencoba proses masuk dan keluarnya data dari antrean.
 
-Ada juga fitur perhitungan total belanja menggunakan stack. Contoh ekspresi yang bisa dicoba:
+terdapat juga fitur perhitungan total belanja menggunakan stack. Contoh ekspresi yang bisa dicoba:
 
 ```text
 ( 3 * 12000 ) + ( 2 * 8500 ) - 5000
 ```
 
-Ekspresi tersebut diubah ke bentuk postfix sebelum dihitung, dengan hasil `48000` atau Rp48.000.
+Ekspresi tersebut diubah dari bentuk infix ke bentuk postfix sebelum dihitung, dengan hasil `48000` atau Rp48.000.
 
 Fitur undo dan redo digunakan untuk membatalkan aksi sebelumnya atau mengembalikan aksi yang dibatalkan.
 

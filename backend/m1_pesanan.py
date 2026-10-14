@@ -1,6 +1,5 @@
 """
 M1 - Data Pesanan: Array vs Linked List
-Dilarang memakai dict/set/sorted/.sort()/collections/heapq/bisect.
 """
 
 class ArrayPesanan:

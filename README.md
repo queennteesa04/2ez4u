@@ -47,6 +47,8 @@ Di bagian M1, data pesanan disimpan menggunakan Array dan Linked List. Beberapa 
 
 Pada menu lihat pesanan, kolom input bisa dikosongkan untuk melihat ringkasan dan 20 pesanan pertama. jika ingin melihat pesanan tertentu, masukkan indeksnya, misalnya `0`.
 
+![Tambah Prioritas](screenshot/Screenshot tambah prioritas.png)
+
 ## Fitur M2 - Antrean dan kasir
 
 M2 berisi implementasi queue biasa dan circular queue. Keduanya dipakai untuk mencoba proses masuk dan keluarnya data dari antrean.

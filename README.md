@@ -73,6 +73,8 @@ terdapat juga fitur perhitungan total belanja menggunakan stack. Contoh ekspresi
 
 Ekspresi tersebut diubah dari bentuk infix ke bentuk postfix sebelum dihitung, dengan hasil `48000` atau Rp48.000.
 
+![Hitung kasir postfix](screenshots/Screenshot-postfix.png)
+
 Fitur undo dan redo digunakan untuk membatalkan aksi sebelumnya atau mengembalikan aksi yang dibatalkan.
 
 ## Fitur M3 - Sorting dan searching

@@ -258,6 +258,8 @@ class UndoRedoQueue:
             return False
 
         if aksi.jenis == "enqueue":
+            # Untuk antrean circular, pembatalan enqueue di ujung belakang
+            # dilakukan dengan mengambil satu elemen terakhir secara aman.
             current = self.antrean.snapshot()
             target = []
             i = 0
@@ -304,3 +306,85 @@ def evaluasi_kasir(ekspresi):
     postfix = ke_postfix(ekspresi)
     total = hitung_postfix(postfix)
     return postfix, total
+
+
+def jejak_ke_postfix(ekspresi):
+    """Mengembalikan postfix dan catatan tiap langkah konversi."""
+    tokens = tokenisasi(ekspresi)
+    operators = Stack()
+    output = []
+    jejak = []
+
+    def stack_text():
+        return " ".join(operators.data) if len(operators) else "kosong"
+
+    i = 0
+    while i < len(tokens):
+        t = tokens[i]
+        if t.replace(".", "", 1).isdigit():
+            output.append(t)
+            tindakan = "Angka langsung masuk ke keluaran"
+        elif t == "(":
+            operators.push(t)
+            tindakan = "Push ( ke stack"
+        elif t == ")":
+            while not operators.kosong() and operators.peek() != "(":
+                output.append(operators.pop())
+            if operators.kosong():
+                raise ValueError("Kurung tutup tidak punya pasangan")
+            operators.pop()
+            tindakan = "Pop operator sampai (, lalu buang ("
+        else:
+            while (not operators.kosong() and operators.peek() != "("
+                   and prioritas_operator(operators.peek()) >= prioritas_operator(t)):
+                output.append(operators.pop())
+            operators.push(t)
+            tindakan = "Pop operator berprioritas sama/lebih tinggi, lalu push " + t
+        jejak.append((t, tindakan, stack_text(), " ".join(output) if output else "kosong"))
+        i += 1
+
+    while not operators.kosong():
+        op = operators.pop()
+        if op == "(":
+            raise ValueError("Kurung buka tidak punya pasangan")
+        output.append(op)
+        jejak.append(("akhir", "Pop sisa operator " + op, stack_text(), " ".join(output)))
+    return output, jejak
+
+
+def jejak_hitung_postfix(postfix):
+    """Menghitung postfix dan mengembalikan catatan setiap langkah stack."""
+    angka = Stack()
+    jejak = []
+    for t in postfix:
+        if isinstance(t, (int, float)):
+            angka.push(t)
+            tindakan = "Push " + str(t)
+        elif t.replace(".", "", 1).isdigit():
+            nilai = float(t) if "." in t else int(t)
+            angka.push(nilai)
+            tindakan = "Push " + t
+        else:
+            b = angka.pop()
+            a = angka.pop()
+            if a is None or b is None:
+                raise ValueError("Ekspresi postfix tidak valid")
+            if t == "+":
+                hasil = a + b
+            elif t == "-":
+                hasil = a - b
+            elif t == "*":
+                hasil = a * b
+            elif t == "/":
+                if b == 0:
+                    raise ZeroDivisionError("Pembagian dengan nol")
+                hasil = a / b
+            else:
+                raise ValueError("Operator tidak dikenal: " + str(t))
+            angka.push(hasil)
+            tindakan = f"Pop {b} dan {a} -> {a} {t} {b} = {hasil:g}"
+        jejak.append((str(t), tindakan, " ".join(str(x) for x in angka.data) if len(angka) else "kosong"))
+    hasil = angka.pop()
+    if not angka.kosong():
+        raise ValueError("Ekspresi postfix tidak valid")
+    return hasil, jejak
